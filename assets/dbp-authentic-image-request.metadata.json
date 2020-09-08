@@ -1,0 +1,17 @@
+{
+  "element": "dbp-authentic-image-request",
+  "module_src": "dbp-authentic-image-request.js",
+  "routing_name": "authentic-image-request",
+  "name": {
+    "de": "Bild aus offiziellen Quellen übernehmen",
+    "en": "Load image from authentic sources"
+  },
+  "short_name": {
+    "de": "Offizielles Bild laden",
+    "en": "Load official image"
+  },
+  "description": {
+    "de": "Lädt ein offizielles Passfoto von einer staatlichen Behörde herunter",
+    "en": "Loads an official passport photo from a state authority"
+  }
+}

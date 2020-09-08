@@ -1,0 +1,7 @@
+{
+  "authentic-image-request": {
+    "title": "Load image from authentic sources",
+    "request-button": "Load image",
+    "description": "Loads an official passport photo from a state authority."
+  }
+}

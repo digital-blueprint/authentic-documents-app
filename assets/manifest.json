@@ -1,0 +1,21 @@
+{
+  "short_name": "AuthenticDocument",
+  "name": "TUGraz AuthenticDocument",
+  "start_url": "./dbp-authentic-document.html",
+  "icons": [
+    {
+      "src": "local/dbp-authentic-document/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "local/dbp-authentic-document/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#245B78",
+  "display": "standalone",
+  "theme_color": "#E4154B"
+}
+
