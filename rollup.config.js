@@ -51,14 +51,14 @@ switch (build) {
     keyCloakClientId = 'auth-dev-mw-frontend-local';
     break;
   case 'development':
-    basePath = '/apps/authentic-document/';
+    basePath = '/apps/authenticdocument/';
     entryPointURL = 'https://mw-dev.tugraz.at';
     keyCloakServer = 'auth-dev.tugraz.at';
     keyCloakBaseURL = 'https://' + keyCloakServer + '/auth';
     keyCloakClientId = 'auth-dev-mw-frontend';
     break;
   case 'demo':
-    basePath = '/apps/authentic-document/';
+    basePath = '/apps/authenticdocument/';
     entryPointURL = 'https://api-demo.tugraz.at';
     keyCloakServer = 'auth-test.tugraz.at';
     keyCloakBaseURL = 'https://' + keyCloakServer + '/auth';
@@ -73,7 +73,7 @@ switch (build) {
     matomoSiteId = 137;
     break;
   case 'test':
-    basePath = '/apps/authentic-document/';
+    basePath = '/apps/authenticdocument/';
     entryPointURL = '';
     keyCloakServer = '';
     keyCloakBaseURL = '';
