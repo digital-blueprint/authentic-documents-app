@@ -135,7 +135,7 @@
     src="<%= getUrl(name + '.topic.metadata.json') %>"
     entry-point-url="<%= entryPointURL %>"
     base-path="<%= getUrl('') %>"
-    keycloak-config='{"url": "<%= keyCloakBaseURL %>", "realm": "tugraz", "clientId": "<%= keyCloakClientId %>", "silentCheckSsoRedirectUri": "<%= getUrl('silent-check-sso.html') %>"}'
+    keycloak-config='{"url": "<%= keyCloakBaseURL %>", "realm": "tugraz", "clientId": "<%= keyCloakClientId %>", "silentCheckSsoRedirectUri": "<%= getUrl('silent-check-sso.html') %>", "idpHint": "eid-oidc"}'
 ><dbp-loading-spinner></dbp-loading-spinner></<%= name %>>
 
 <!-- Error handling for too old browsers -->

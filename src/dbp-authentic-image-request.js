@@ -48,6 +48,19 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         super.update(changedProperties);
     }
 
+    async httpGetAsync(theUrl)
+    {
+        let response = await fetch(theUrl, { headers: new Headers({'Authorization': "Bearer " + window.DBPAuthToken })});
+        let data = await response.json();
+        await console.log("------------", data);
+        return data;
+    }
+
+    retrieveToken() {
+        let idp_token;
+        idp_token =this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token');
+    }
+
     static get styles() {
         // language=css
         return css`
@@ -60,10 +73,10 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
     }
 
     render() {
-
         return html`
            <h2>${i18n.t('authentic-image-request.title')}</h2>
            <p>${i18n.t('authentic-image-request.description')}</p>
+           <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">retrieve token</button>
            <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button>
         `;
     }
