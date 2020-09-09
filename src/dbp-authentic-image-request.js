@@ -16,7 +16,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         this.access_token = '';
         this.given_name = '';
         this.family_name = '';
-        this.fullRespons = '';
+        this.fullResponse = '';
+        this.entryPointUrl = commonUtils.getAPiUrl();
+        this.responseFromServer = '';
     }
 
     static get scopedElements() {
@@ -35,7 +37,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             access_token: { type: String, attribute: false },
             given_name: { type: String, attribute: false },
             family_name: { type: String, attribute: false },
-            fullRespons: { type: String, attribute: false }
+            fullResponse: { type: String, attribute: false },
+            responseFromServer: { type: String, attribute: false }
         };
     }
 
@@ -45,12 +48,15 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
 
     update(changedProperties) {
         changedProperties.forEach((oldValue, propName) => {
-            if (propName === "lang") {
-                i18n.changeLanguage(this.lang);
+            switch (propName) {
+                case "lang":
+                    i18n.changeLanguage(this.lang);
+                    break;
             }
+            super.update(changedProperties);
+            // console.log(propName, oldValue);
         });
 
-        super.update(changedProperties);
     }
 
     async httpGetAsync(url, options)
@@ -88,17 +94,21 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         console.log(response);
         console.log("token", this.access_token);
 
+
         const options2 = {
+            method: 'POST',
             headers: {
-                Authorization: "Bearer " + this.access_token
-            }
-        };
+                'Content-Type': 'application/ld+json',
+                'Authorization': 'Bearer ' + window.DBPAuthToken,
+            },
+            body: JSON.stringify({
+                'token': this.access_token,
+                'type': 'image',
+            })};
+        this.entryPointUrl = this.entryPointUrl + '/authentic_document_requests';
         if (this.access_token !== '') {
-            //response = await this.httpGetAsync('https://eid.egiz.gv.at/documentHandler/documents/document/', options2);
+            this.responseFromServer = await this.httpGetAsync(this.entryPointUrl, options2);
         }
-        //console.log("response", response);
-
-
     }
 
     static get styles() {
@@ -117,7 +127,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
            <p>${i18n.t('authentic-image-request.description')}</p>
            <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">retrieve token</button>
            
-           <h2>Hallo ${this.given_name} ${this.family_name}!</h2>
+           <h2>Hallo ${this.given_name} ${this.family_name}! </h2>
+           <pre><code> ${JSON.stringify(this.responseFromServer, undefined, 4)} </code></pre>
            <p> ${this.access_token} </p><br>
            <pre><code> ${JSON.stringify(this.fullRespons, undefined, 4)} </code></pre>
            <!-- <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button>-->
