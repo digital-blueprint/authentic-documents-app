@@ -61,9 +61,15 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
 
     async httpGetAsync(url, options)
     {
-        let response = await fetch(url, options);
+        let response = await fetch(url, options).then(result => {
+            if (!result.ok) throw result;
+            return result.json();
+        }).catch(error => {
+                console.log("fetch error:", error);
+            });
 
-        return await response.json();
+        return await response;
+
     }
 
     parseJwt (token) {
@@ -74,16 +80,17 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         }).join(''));
 
         return JSON.parse(jsonPayload);
-    };
+    }
 
     async retrieveToken() {
         let response;
-        const options1 = {
+        const options_get_access_token = {
             headers: {
                 Authorization: "Bearer " + window.DBPAuthToken
             }
         };
-        response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options1);
+        response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options_get_access_token);
+
         if (response && response.access_token) {
             this.access_token = response.access_token;
             this.fullRespons = this.parseJwt(response.id_token);
@@ -91,11 +98,10 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             this.given_name = this.fullRespons.given_name;
 
         }
+
         console.log(response);
-        console.log("token", this.access_token);
 
-
-        const options2 = {
+        const options_send_api_request = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/ld+json',
@@ -107,7 +113,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             })};
         this.entryPointUrl = this.entryPointUrl + '/authentic_document_requests';
         if (this.access_token !== '') {
-            this.responseFromServer = await this.httpGetAsync(this.entryPointUrl, options2);
+            this.responseFromServer = await this.httpGetAsync(this.entryPointUrl, options_send_api_request);
         }
     }
 
@@ -131,7 +137,6 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
            <pre><code> ${JSON.stringify(this.responseFromServer, undefined, 4)} </code></pre>
            <p> ${this.access_token} </p><br>
            <pre><code> ${JSON.stringify(this.fullRespons, undefined, 4)} </code></pre>
-           <!-- <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button>-->
         `;
     }
 }
