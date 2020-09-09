@@ -294,7 +294,7 @@ Dependencies:
           historyApiFallback: basePath + pkg.name + '.html',
           https: USE_HTTPS ? generateTLSConfig() : false,
             headers: {
-                'Content-Security-Policy': `default-src 'self' 'unsafe-eval' 'unsafe-inline' analytics.tugraz.at ${keyCloakServer} ${entryPointURL} httpbin.org ; img-src * blob: data:`
+                'Content-Security-Policy': `default-src 'self' 'unsafe-eval' 'unsafe-inline' analytics.tugraz.at eid.egiz.gv.at ${keyCloakServer} ${entryPointURL} httpbin.org ; img-src * blob: data:`
             },
         }) : false
     ]

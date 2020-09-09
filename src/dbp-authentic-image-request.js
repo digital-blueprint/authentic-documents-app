@@ -17,6 +17,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         this.lang = i18n.language;
         this.entryPointUrl = commonUtils.getAPiUrl();
         this.access_token = '';
+        this.given_name = '';
+        this.family_name = '';
+        this.fullRespons = '';
     }
 
     static get scopedElements() {
@@ -32,6 +35,10 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         return {
             lang: { type: String },
             entryPointUrl: { type: String, attribute: 'entry-point-url' },
+            access_token: { type: String, attribute: false },
+            given_name: { type: String, attribute: false },
+            family_name: { type: String, attribute: false },
+            fullRespons: { type: String, attribute: false }
         };
     }
 
@@ -57,6 +64,16 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         return data;
     }
 
+    parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        return JSON.parse(jsonPayload);
+    };
+
     async retrieveToken() {
         let response;
         const options1 = {
@@ -67,11 +84,22 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options1);
         if (response && response.access_token) {
             this.access_token = response.access_token;
+            this.fullRespons = this.parseJwt(response.id_token);
+            this.family_name = this.fullRespons.family_name;
+            this.given_name = this.fullRespons.given_name;
+
         }
+        console.log(response);
         console.log("token", this.access_token);
-
-
-        // hier kommt request hin
+        const options2 = {
+            headers: {
+                Authorization: "Bearer " + this.access_token
+            }
+        };
+        if (this.access_token !== '') {
+            //response = await this.httpGetAsync('https://eid.egiz.gv.at/documentHandler/documents/document/', options2);
+        }
+        //console.log("response", response);
     }
 
     static get styles() {
@@ -90,7 +118,11 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
            <h2>${i18n.t('authentic-image-request.title')}</h2>
            <p>${i18n.t('authentic-image-request.description')}</p>
            <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">retrieve token</button>
-           <!-- <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button> -->
+           
+           <h2>Hallo ${this.given_name} ${this.family_name}!</h2>
+           <p> ${this.access_token} </p><br>
+           <pre><code> ${JSON.stringify(this.fullRespons, undefined, 4)} </code></pre>
+           <!-- <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button>-->
         `;
     }
 }
