@@ -1,13 +1,13 @@
 # Authentic Document Application
 
-[GitLab Repository](https://gitlab.tugraz.at/dbp/apps/AuthenticDocument)
+[GitLab Repository](https://gitlab.tugraz.at/dbp/apps/authenticdocument)
 
 ## Local development
 
 ```bash
 # get the source
-git clone git@gitlab.tugraz.at:dbp/apps/AuthenticDocument.git
-cd AuthenticDocument
+git clone git@gitlab.tugraz.at:dbp/apps/authenticdocument.git
+cd authenticdocument
 git submodule update --init
 
 # install dependencies
