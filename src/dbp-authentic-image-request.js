@@ -2,11 +2,8 @@ import {createI18nInstance} from './i18n.js';
 import {css, html, LitElement} from 'lit-element';
 import {ScopedElementsMixin} from '@open-wc/scoped-elements';
 import * as commonUtils from 'dbp-common/utils';
-import * as utils from './utils';
 import {Button, Icon, MiniSpinner} from 'dbp-common';
 import * as commonStyles from 'dbp-common/styles';
-import {classMap} from 'lit-html/directives/class-map.js';
-import JSONLD from "dbp-common/jsonld";
 import {TextSwitch} from './textswitch.js';
 
 const i18n = createI18nInstance();
@@ -58,10 +55,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
 
     async httpGetAsync(url, options)
     {
-
         let response = await fetch(url, options);
-        let data = await response.json();
-        return data;
+
+        return await response.json();
     }
 
     parseJwt (token) {
@@ -91,6 +87,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         }
         console.log(response);
         console.log("token", this.access_token);
+
         const options2 = {
             headers: {
                 Authorization: "Bearer " + this.access_token
@@ -100,6 +97,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             //response = await this.httpGetAsync('https://eid.egiz.gv.at/documentHandler/documents/document/', options2);
         }
         //console.log("response", response);
+
+
     }
 
     static get styles() {
@@ -109,7 +108,6 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             ${commonStyles.getGeneralCSS(false)}
             ${commonStyles.getButtonCSS()}
             ${commonStyles.getNotificationCSS()}
-           
         `;
     }
 
