@@ -16,6 +16,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         super();
         this.lang = i18n.language;
         this.entryPointUrl = commonUtils.getAPiUrl();
+        this.access_token = '';
     }
 
     static get scopedElements() {
@@ -48,17 +49,29 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         super.update(changedProperties);
     }
 
-    async httpGetAsync(theUrl)
+    async httpGetAsync(url, options)
     {
-        let response = await fetch(theUrl, { headers: new Headers({'Authorization': "Bearer " + window.DBPAuthToken })});
+
+        let response = await fetch(url, options);
         let data = await response.json();
-        await console.log("------------", data);
         return data;
     }
 
-    retrieveToken() {
-        let idp_token;
-        idp_token =this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token');
+    async retrieveToken() {
+        let response;
+        const options1 = {
+            headers: {
+                Authorization: "Bearer " + window.DBPAuthToken
+            }
+        };
+        response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options1);
+        if (response && response.access_token) {
+            this.access_token = response.access_token;
+        }
+        console.log("token", this.access_token);
+
+
+        // hier kommt request hin
     }
 
     static get styles() {
@@ -77,7 +90,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
            <h2>${i18n.t('authentic-image-request.title')}</h2>
            <p>${i18n.t('authentic-image-request.description')}</p>
            <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">retrieve token</button>
-           <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button>
+           <!-- <button class="button is-primary" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.request-button')}</button> -->
         `;
     }
 }
