@@ -96,7 +96,6 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             this.fullRespons = this.parseJwt(response.id_token);
             this.family_name = this.fullRespons.family_name;
             this.given_name = this.fullRespons.given_name;
-
         }
 
         console.log(response);
@@ -111,9 +110,11 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
                 'token': this.access_token,
                 'type': 'image',
             })};
-        this.entryPointUrl = this.entryPointUrl + '/authentic_document_requests';
+
+        const url = this.entryPointUrl + '/authentic_document_requests';
+
         if (this.access_token !== '') {
-            this.responseFromServer = await this.httpGetAsync(this.entryPointUrl, options_send_api_request);
+            this.responseFromServer = await this.httpGetAsync(url, options_send_api_request);
         }
     }
 
