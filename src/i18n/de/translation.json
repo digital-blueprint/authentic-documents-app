@@ -2,6 +2,11 @@
   "authentic-image-request": {
     "title": "Bild aus offiziellen Quellen übernehmen",
     "request-button": "Bild laden",
-    "description": "Lädt ein offizielles Passfoto von einer staatlichen Behörde herunter."
+    "description": "Lädt ein offizielles Passfoto von einer staatlichen Behörde herunter.",
+    "available-documents": "Verfügbare Dokumente für",
+    "retrieve-token": "Hole verfügbare Dokumente",
+    "request-document": "Dokument abrufen",
+    "request-success-title": "Erfolgreich angefordert",
+    "request-success-body": "Das angeforderte Dokument wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt."
   }
 }
