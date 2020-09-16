@@ -1,12 +1,14 @@
 {
   "authentic-image-request": {
-    "title": "Bild aus offiziellen Quellen übernehmen",
-    "request-button": "Bild laden",
-    "description": "Lädt ein offizielles Passfoto von einer staatlichen Behörde herunter.",
+    "title": "Dokumente aus offiziellen Quellen übernehmen",
+    "request-button": "Dokument laden",
+    "description": "Lädt ein offizielles Dokument von einer staatlichen Behörde herunter.",
     "available-documents": "Verfügbare Dokumente für",
-    "retrieve-token": "Hole verfügbare Dokumente",
-    "request-document": "Dokument abrufen",
+    "retrieve-token": "Verfügbare Dokumente anzeigen",
+    "request-document": "Dokument freigeben",
     "request-success-title": "Erfolgreich angefordert",
-    "request-success-body": "Das angeforderte Dokument wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt."
+    "request-success-body": "Das angeforderte Dokument wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt.",
+    "request-text": "Für die Verwendung an der TU Graz freigeben",
+    "not-available-text": "Nicht verfügbar. Bitte wenden Sie sich an den IT-Support"
   }
 }

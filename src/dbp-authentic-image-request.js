@@ -19,8 +19,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         this.family_name = '';
         this.fullResponse = '';
         this.responseFromServer = '';
-        this.items = [];
-        this.disableBtns = false;
+        this.itemsAvailable = [];
+        this.itemsRequested = [];
+        this.itemsNotAvailable = [];
         this.gridContainer = "display:none";
     }
 
@@ -42,8 +43,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             family_name: { type: String, attribute: false },
             fullResponse: { type: String, attribute: false },
             responseFromServer: { type: String, attribute: false },
-            items: { type: Array, attribute: false },
-            disableBtns: { type: Boolean, attribute: false },
+            itemsAvailable: { type: Array, attribute: false },
+            itemsRequested: { type: Array, attribute: false },
+            itemsNotAvailable: { type: Array, attribute: false },
             gridContainer: { type: String, attribute: false },
         };
     }
@@ -74,8 +76,12 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         for (let i = 0; i < numTypes; i++ ) {
             let entry = this.responseFromServer['hydra:member'][i];
 
-            if (entry['availabilityStatus'] !== 'not_available') {
-                this.items[i] = entry['urlSafeAttribute'];
+            if (entry['availabilityStatus'] === 'available') {
+                this.itemsAvailable[i] = entry['name'];
+            } else if (entry['availabilityStatus'] === 'requested') {
+                this.itemsRequested[i] = entry['name'];
+            } else {
+                this.itemsNotAvailable[i] = entry['name'];
             }
         }
     }
@@ -118,7 +124,6 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             this.fullResponse = this.parseJwt(response.id_token);
             this.family_name = this.fullResponse.family_name;
             this.given_name = this.fullResponse.given_name;
-            this.realFullResponse = response;
         }
 
         console.log(response);
@@ -158,14 +163,19 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         */
     }
 
-    buttonPressSuccessMessage() {
-        this.disableBtns = true;
+    buttonPressSuccessMessage(event, id) {
+        this.shadowRoot.getElementById('btn' + id).setAttribute('disabled', '');
         send({
             "summary": i18n.t('authentic-image-request.request-success-title'),
             "body": i18n.t('authentic-image-request.request-success-body', { name: this.name }),
             "type": "success",
             "timeout": 10,
         });
+    }
+
+    buttonPressShowImage(event, id) {
+        this.shadowRoot.getElementById('btn' + id).setAttribute('disabled', '');
+        //TODO: show picture
     }
 
     static get styles() {
@@ -176,12 +186,21 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             ${commonStyles.getButtonCSS()}
             ${commonStyles.getNotificationCSS()}
             
-            #docs {
-                display: block;
-                margin-block-start: 1em;
-                margin-block-end: 1em;
-                margin-inline-start: 0px;
-                margin-inline-end: 0px;
+            #documents {
+                display: grid;
+                grid-template-columns: repeat(2, max-content);
+                column-gap: 15px;
+                row-gap: 1.5em;
+                align-items: center;
+                margin-top: 2em;
+                margin-bottom: 2em;
+            }
+            
+            .header {
+                display: grid;
+                align-items: center;
+                grid-template-columns: 1 40px;
+                gap: 10px;
             }
             
             .border {
@@ -213,8 +232,15 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
            
            <div id="grid-container" class="border" style="${this.gridContainer}">
                 <h2 id="doc-headline" >${i18n.t('authentic-image-request.available-documents')} ${this.given_name} ${this.family_name}:</h2>
-                <div id="docs">
-                    ${this.items.map(i => html`<p>${i}</p><button class="button is-primary" @click="${this.buttonPressSuccessMessage}" title="${i}" ?disabled="${this.disableBtns}" >${i18n.t('authentic-image-request.request-document')}</button>`)}
+                <div id="documents">
+                    ${this.itemsRequested.map(i => html`<span class="header"><strong>${i}</strong>${i18n.t('authentic-image-request.request-text')}.</span> 
+                    <button id="btn${i}" class="button is-primary" @click="${(e) => this.buttonPressSuccessMessage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>`)}
+                    
+                    ${this.itemsAvailable.map(i => html`<span class="header"><strong>${i}</strong>${i18n.t('authentic-image-request.request-text')}.</span>
+                    <button id="btn${i}" class="button is-primary" @click="${(e) => this.buttonPressShowImage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>`)}
+                    
+                    ${this.itemsNotAvailable.map(i => html`<span class="header"><strong>${i}</strong>${i18n.t('authentic-image-request.not-available-text')}.</span>
+                    <button class="button is-primary" disabled >${i18n.t('authentic-image-request.request-document')}</button>`)}
                 </div>
            </div>
         `;
