@@ -2,13 +2,15 @@
   "authentic-image-request": {
     "title": "Load documents from authentic sources",
     "request-button": "Load document",
-    "description": "Loads an official passport photo from a state authority.",
+    "description": "Allows requesting an official document from a state authority and share it with a third party.",
     "available-documents": "Available documents for",
     "retrieve-token": "Show available Documents",
     "request-document": "Share Document",
+    "show-document": "Show Document",
     "request-success-title": "Successful requested",
-    "request-success-body": "The requested document will be retrieved as soon as it is available. You will be informed by e-mail about the further process.",
-    "request-text": "For use at the TU Graz",
+    "request-success-body": "The requested document ('{{name}}') will be retrieved as soon as it is available. You will be informed by e-mail about the further process.",
+    "available-text": "Share with TU Graz",
+    "request-text": "Request and share with TU Graz",
     "not-available-text": "Not available. Please contact the IT support"
   }
 }

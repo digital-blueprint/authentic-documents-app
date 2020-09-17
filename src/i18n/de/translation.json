@@ -2,13 +2,15 @@
   "authentic-image-request": {
     "title": "Dokumente aus offiziellen Quellen übernehmen",
     "request-button": "Dokument laden",
-    "description": "Lädt ein offizielles Dokument von einer staatlichen Behörde herunter.",
+    "description": "Erlaubt es offizielle Dokumente von einer staatlichen Behörde anzufordern und diese an dritte freizugeben.",
     "available-documents": "Verfügbare Dokumente für",
     "retrieve-token": "Verfügbare Dokumente anzeigen",
     "request-document": "Dokument freigeben",
+    "show-document": "Dokument anzeigen",
     "request-success-title": "Erfolgreich angefordert",
-    "request-success-body": "Das angeforderte Dokument wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt.",
-    "request-text": "Für die Verwendung an der TU Graz freigeben",
+    "request-success-body": "Das angeforderte Dokument ('{{name}}') wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt.",
+    "available-text": "Für die Verwendung an der TU Graz freigeben",
+    "request-text": "Anfordern und für die Verwendung an der TU Graz freigeben",
     "not-available-text": "Nicht verfügbar. Bitte wenden Sie sich an den IT-Support"
   }
 }

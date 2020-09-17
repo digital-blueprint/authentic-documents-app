@@ -23,6 +23,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         this.itemsRequested = [];
         this.itemsNotAvailable = [];
         this.gridContainer = "display:none";
+        this.imageSrc = null;
     }
 
     static get scopedElements() {
@@ -47,6 +48,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             itemsRequested: { type: Array, attribute: false },
             itemsNotAvailable: { type: Array, attribute: false },
             gridContainer: { type: String, attribute: false },
+            imageSrc: { type: String, attribute: false },
         };
     }
 
@@ -77,11 +79,11 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             let entry = this.responseFromServer['hydra:member'][i];
 
             if (entry['availabilityStatus'] === 'available') {
-                this.itemsAvailable[i] = entry['name'];
+                this.itemsAvailable[i] = entry;
             } else if (entry['availabilityStatus'] === 'requested') {
-                this.itemsRequested[i] = entry['name'];
+                this.itemsRequested[i] = entry;
             } else {
-                this.itemsNotAvailable[i] = entry['name'];
+                this.itemsNotAvailable[i] = entry;
             }
         }
     }
@@ -125,18 +127,17 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             this.family_name = this.fullResponse.family_name;
             this.given_name = this.fullResponse.given_name;
         }
-
-        console.log(response);
-
+        console.log(this.access_token);
         //Retrieve a list of available document types
         const options_send_api_request_doc_types = {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/ld+json',
-                'Authorization': 'Bearer ' + window.DBPAuthToken
+                'Authorization': 'Bearer ' + window.DBPAuthToken,
+                'Token': this.access_token,
             }};
 
-        const url = this.entryPointUrl + '/authentic_document_types?page=1&token=' + 'photo-jpeg-available-token'; //TODO: replace token
+        const url = this.entryPointUrl + '/authentic_document_types?page=1'; 
 
         if (this.access_token !== '') {
             this.responseFromServer = await this.httpGetAsync(url, options_send_api_request_doc_types);
@@ -163,19 +164,54 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         */
     }
 
-    buttonPressSuccessMessage(event, id) {
-        this.shadowRoot.getElementById('btn' + id).setAttribute('disabled', '');
+    async buttonPressSuccessMessage(event, entry) {
+        this.shadowRoot.getElementById('btn-' + entry['identifier']).setAttribute('disabled', '');
+
+        let url = this.entryPointUrl + '/authentic_document_requests';
+
+        let body = {
+            "typeId": entry['identifier'],
+            "token": this.access_token,
+        };
+
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + window.DBPAuthToken,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+        if (!response.ok) {
+            this.shadowRoot.getElementById('btn-' + entry['identifier']).removeAttribute('disabled');
+            return;
+        }
+
+        let data = await response.json();
+        let arrivalDate = new Date(data['estimatedTimeOfArrival']);
+        console.log(arrivalDate.toLocaleString());
+
         send({
             "summary": i18n.t('authentic-image-request.request-success-title'),
-            "body": i18n.t('authentic-image-request.request-success-body', { name: this.name }),
+            "body": i18n.t('authentic-image-request.request-success-body', { name: entry['name'] }),
             "type": "success",
             "timeout": 10,
         });
     }
 
-    buttonPressShowImage(event, id) {
-        this.shadowRoot.getElementById('btn' + id).setAttribute('disabled', '');
-        //TODO: show picture
+    async buttonPressShowDocument(event, data) {
+        const options = {
+            headers: {
+                Authorization: "Bearer " + window.DBPAuthToken,
+                Accept: 'application/ld+json',
+                Token: this.access_token,
+            }
+        };
+        this.imageSrc = null;
+        let url = this.entryPointUrl + '/authentic_documents/' + data['identifier'];
+        let resp = await this.httpGetAsync(url, options);
+        this.imageSrc = resp['contentUrl'];
     }
 
     static get styles() {
@@ -188,7 +224,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             
             #documents {
                 display: grid;
-                grid-template-columns: repeat(2, max-content);
+                grid-template-columns: repeat(3, max-content);
                 column-gap: 15px;
                 row-gap: 1.5em;
                 align-items: center;
@@ -233,16 +269,20 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
            <div id="grid-container" class="border" style="${this.gridContainer}">
                 <h2 id="doc-headline" >${i18n.t('authentic-image-request.available-documents')} ${this.given_name} ${this.family_name}:</h2>
                 <div id="documents">
-                    ${this.itemsRequested.map(i => html`<span class="header"><strong>${i}</strong>${i18n.t('authentic-image-request.request-text')}.</span> 
-                    <button id="btn${i}" class="button is-primary" @click="${(e) => this.buttonPressSuccessMessage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>`)}
+                    ${this.itemsRequested.map(i => html`<span class="header"><strong>${i['name']}</strong>${i18n.t('authentic-image-request.request-text')}.</span> 
+                    <button id="btn-${i['identifier']}" class="button is-primary" @click="${(e) => this.buttonPressSuccessMessage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>
+                    <button class="button is-primary" disabled >${i18n.t('authentic-image-request.show-document')}</button>`)}
                     
-                    ${this.itemsAvailable.map(i => html`<span class="header"><strong>${i}</strong>${i18n.t('authentic-image-request.request-text')}.</span>
-                    <button id="btn${i}" class="button is-primary" @click="${(e) => this.buttonPressShowImage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>`)}
+                    ${this.itemsAvailable.map(i => html`<span class="header"><strong>${i['name']}</strong>${i18n.t('authentic-image-request.available-text')}.</span>
+                    <button id="btn-${i['identifier']}" class="button is-primary" @click="${(e) => this.buttonPressSuccessMessage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>
+                    <button class="button is-primary" @click="${(e) => this.buttonPressShowDocument(e, i)}" >${i18n.t('authentic-image-request.show-document')}</button>`)}
                     
-                    ${this.itemsNotAvailable.map(i => html`<span class="header"><strong>${i}</strong>${i18n.t('authentic-image-request.not-available-text')}.</span>
-                    <button class="button is-primary" disabled >${i18n.t('authentic-image-request.request-document')}</button>`)}
+                    ${this.itemsNotAvailable.map(i => html`<span class="header"><strong>${i['name']}</strong>${i18n.t('authentic-image-request.not-available-text')}.</span>
+                    <button id="btn-${i['identifier']}" class="button is-primary" disabled >${i18n.t('authentic-image-request.request-document')}</button>
+                    <button class="button is-primary" disabled >${i18n.t('authentic-image-request.show-document')}</button>`)}
                 </div>
            </div>
+           ${this.imageSrc ? html`<img src="${this.imageSrc}">` : ``}
         `;
     }
 }
