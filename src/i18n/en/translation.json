@@ -2,6 +2,7 @@
   "authentic-image-request": {
     "title": "Load documents from authentic sources",
     "request-button": "Load document",
+    "load-image": "Load photo",
     "description": "Allows requesting an official document from a state authority and share it with a third party.",
     "available-documents": "Available documents for",
     "retrieve-token": "Show available Documents",

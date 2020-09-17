@@ -110,6 +110,35 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         return JSON.parse(jsonPayload);
     }
 
+    async doDummyAuthenticDocumentRequest() {
+        const url = this.entryPointUrl + '/authentic_document_requests';
+
+        const body = {
+            "typeId": "dummy-photo-jpeg-available",
+            "token": "photo-jpeg-available-token",
+        };
+
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + window.DBPAuthToken,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+
+        let data = await response.json();
+        let arrivalDate = new Date(data['estimatedTimeOfArrival']);
+        console.log(arrivalDate.toLocaleString());
+
+        send({
+            "summary": i18n.t('authentic-image-request.request-success-title'),
+            "body": i18n.t('authentic-image-request.request-success-body', { name: 'dummy-photo-jpeg-available' }),
+            "type": "success",
+            "timeout": 10,
+        });
+    }
+
     async retrieveToken() {
         let response;
 
@@ -264,7 +293,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         return html`
            <h2>${i18n.t('authentic-image-request.title')}</h2>
            <p>${i18n.t('authentic-image-request.description')}</p>
+           
            <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.retrieve-token')}</button>
+           <button class="button is-primary" @click="${this.doDummyAuthenticDocumentRequest}">${i18n.t('authentic-image-request.load-image')}</button>
            
            <div id="grid-container" class="border" style="${this.gridContainer}">
                 <h2 id="doc-headline" >${i18n.t('authentic-image-request.available-documents')} ${this.given_name} ${this.family_name}:</h2>
