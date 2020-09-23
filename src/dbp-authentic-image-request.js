@@ -227,7 +227,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         let nonce = token.nonce;
         let input = nonce + token.session_state + clientId + 'eid-oidc';
         let hash = btoa(sha256(input));
-        let redirectUri =btoa("http://localhost:8001/dist/de/authentic-image-request");
+        let redirectUri ="localhost%3A8001%2Fdist%2Fde%2Fauthentic-image-request";
         ///{auth-server-root}/auth/realms/{realm}/broker/{provider}/link?client_id={id}&redirect_uri={uri}&nonce={nonce}&hash={hash}
         this.x =  "https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/link?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&nonce=" + nonce + "&hash=" + hash;
     }
