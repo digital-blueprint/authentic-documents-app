@@ -6,6 +6,7 @@ import {Button, Icon, MiniSpinner} from 'dbp-common';
 import * as commonStyles from 'dbp-common/styles';
 import {TextSwitch} from './textswitch.js';
 import { send } from 'dbp-common/notification';
+import { sha256 } from 'js-sha256';
 
 const i18n = createI18nInstance();
 
@@ -24,6 +25,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         this.itemsNotAvailable = [];
         this.gridContainer = "display:none";
         this.imageSrc = null;
+
+        this.x = '';
     }
 
     static get scopedElements() {
@@ -49,6 +52,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             itemsNotAvailable: { type: Array, attribute: false },
             gridContainer: { type: String, attribute: false },
             imageSrc: { type: String, attribute: false },
+
+            x: { type: String, attribute: false },
         };
     }
 
@@ -123,7 +128,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
 
         if (response && response.access_token) {
             this.access_token = response.access_token;
+            console.log("-----", response);
             this.fullResponse = this.parseJwt(response.id_token);
+            console.log(this.fullResponse);
             this.family_name = this.fullResponse.family_name;
             this.given_name = this.fullResponse.given_name;
         }
@@ -214,6 +221,17 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
         this.imageSrc = resp['contentUrl'];
     }
 
+    refreshToken() {
+        let token = window.DBPAuthTokenParsed;
+        let clientId = token.azp;
+        let nonce = token.nonce;
+        let input = nonce + token.session_state + clientId + 'eid-oidc';
+        let hash = btoa(sha256(input));
+        let redirectUri =btoa("http://localhost:8001/dist/de/authentic-image-request");
+        ///{auth-server-root}/auth/realms/{realm}/broker/{provider}/link?client_id={id}&redirect_uri={uri}&nonce={nonce}&hash={hash}
+        this.x =  "https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/link?client_id=" + clientId + "&redirect_uri=" + redirectUri + "&nonce=" + nonce + "&hash=" + hash;
+    }
+
     static get styles() {
         // language=css
         return css`
@@ -263,6 +281,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
     render() {
         return html`
            <h2>${i18n.t('authentic-image-request.title')}</h2>
+           <button class="button is-primary" @click="${() => this.refreshToken()}">TEST</button>
+           <h2><a href="${this.x}">${this.x}</a></h2>
            <p>${i18n.t('authentic-image-request.description')}</p>
            <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.retrieve-token')}</button>
            
