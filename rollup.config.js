@@ -37,6 +37,7 @@ let entryPointURL = '';
 let keyCloakServer = '';
 let keyCloakBaseURL = '';
 let keyCloakClientId = '';
+let matomoUrl = 'https://analytics.tugraz.at/';
 let matomoSiteId = 131;
 let useTerser = buildFull;
 let useBabel = buildFull;
@@ -189,6 +190,7 @@ export default {
             keyCloakClientId: keyCloakClientId,
             environment: build,
             matomoSiteId: matomoSiteId,
+            matomoUrl: matomoUrl,
             buildInfo: getBuildInfo()
           }
         }),
