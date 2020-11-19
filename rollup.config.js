@@ -14,7 +14,7 @@ import consts from 'rollup-plugin-consts';
 import license from 'rollup-plugin-license';
 import del from 'rollup-plugin-delete';
 import emitEJS from 'rollup-plugin-emit-ejs';
-import babel from '@rollup/plugin-babel';
+import {getBabelOutputPlugin} from '@rollup/plugin-babel';
 import selfsigned from 'selfsigned';
 
 // -------------------------------
@@ -235,7 +235,6 @@ Dependencies:
         replace({
             "process.env.BUILD": '"' + build + '"',
         }),
-        useTerser ? terser() : false,
         copy({
             targets: [
                 {src: 'assets/silent-check-sso.html', dest:'dist'},
@@ -260,31 +259,21 @@ Dependencies:
                 {src: 'node_modules/@dbp-toolkit/common/assets/icons/*.svg', dest: 'dist/local/@dbp-toolkit/common/icons'},
             ],
         }),
-        useBabel && babel({
-          include: [
-              'src/**',
-              'node_modules/pdfjs-dist/**', // uses Promise.allSettled
-          ],
-          babelHelpers: 'runtime',
-          babelrc: false,
-          presets: [[
-            '@babel/preset-env', {
-              loose: true,
-              bugfixes: true,
-              targets: {
-                esmodules: true
+        useBabel && getBabelOutputPlugin({
+            compact: false,
+            presets: [[
+              '@babel/preset-env', {
+                loose: true,
+                modules: false,
+                shippedProposals: true,
+                bugfixes: true,
+                targets: {
+                  esmodules: true
+                }
               }
-            }
-          ]],
-          plugins: [[
-            '@babel/plugin-transform-runtime', {
-              corejs: 3,
-              useESModules: true
-            }
-          ],
-          '@babel/plugin-syntax-dynamic-import',
-          '@babel/plugin-syntax-import-meta']
+            ]],
         }),
+        useTerser ? terser() : false,
         watch ? serve({
           contentBase: '.',
           host: '127.0.0.1',
