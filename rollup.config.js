@@ -251,13 +251,13 @@ Dependencies:
                 },
                 {src: 'node_modules/pdfjs-dist/cmaps/*', dest: 'dist/local/' + pkg.name + '/pdfjs'}, // do we want all map files?
                 {src: 'node_modules/source-sans-pro/WOFF2/OTF/*', dest: 'dist/local/' + pkg.name + '/fonts'},
-                {src: 'node_modules/dbp-common/src/spinner.js', dest: 'dist/local/' + pkg.name, rename: 'spinner.js'},
-                {src: 'node_modules/dbp-common/misc/browser-check.js', dest: 'dist/local/' + pkg.name, rename: 'browser-check.js'},
+                {src: 'node_modules/@dbp-toolkit/common/src/spinner.js', dest: 'dist/local/' + pkg.name, rename: 'spinner.js'},
+                {src: 'node_modules/@dbp-toolkit/common/misc/browser-check.js', dest: 'dist/local/' + pkg.name, rename: 'browser-check.js'},
                 {src: 'assets/icon-*.png', dest: 'dist/local/' + pkg.name},
                 {src: 'assets/*-placeholder.png', dest: 'dist/local/' + pkg.name},
                 {src: 'assets/manifest.json', dest: 'dist', rename: pkg.name + '.manifest.json'},
                 {src: 'assets/*.metadata.json', dest: 'dist'},
-                {src: 'node_modules/dbp-common/assets/icons/*.svg', dest: 'dist/local/dbp-common/icons'},
+                {src: 'node_modules/@dbp-toolkit/common/assets/icons/*.svg', dest: 'dist/local/@dbp-toolkit/common/icons'},
             ],
         }),
         useBabel && babel({
