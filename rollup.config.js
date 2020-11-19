@@ -56,7 +56,7 @@ switch (build) {
     entryPointURL = 'https://mw-dev.tugraz.at';
     keyCloakServer = 'auth-dev.tugraz.at';
     keyCloakBaseURL = 'https://' + keyCloakServer + '/auth';
-    keyCloakClientId = 'auth-dev-mw-frontend';
+    keyCloakClientId = 'authenticdocument-dev_tugraz_at-AUTHENTICDOCUMENT';
     break;
   case 'demo':
     basePath = '/apps/authenticdocument/';
