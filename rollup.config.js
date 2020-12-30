@@ -139,6 +139,7 @@ export default {
     input: (build != 'test') ? [
       'src/' + pkg.name + '.js',
       'src/dbp-authentic-image-request.js',
+      'vendor/toolkit/packages/provider/src/dbp-provider.js',
     ] : glob.sync('test/**/*.js'),
     output: {
       dir: 'dist',
