@@ -92,11 +92,10 @@
 
 <body>
 <dbp-provider id="root"
-              init="availability=global">
+              init="lang=de,global-entry-point-url=<%= entryPointURL %>">
     <<%= name %>
-        lang="de"
+        subscribe="lang:lang,entry-point-url:global-entry-point-url"
         src="<%= getUrl(name + '.topic.metadata.json') %>"
-        entry-point-url="<%= entryPointURL %>"
         base-path="<%= getUrl('') %>"
         keycloak-config='{"url": "<%= keyCloakBaseURL %>", "realm": "tugraz", "clientId": "<%= keyCloakClientId %>", "silentCheckSsoRedirectUri": "<%= getUrl('silent-check-sso.html') %>", "idpHint": "eid-oidc"}'
         matomo-url="<%= matomoUrl %>"
