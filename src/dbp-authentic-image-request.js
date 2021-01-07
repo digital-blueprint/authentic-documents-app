@@ -1,5 +1,5 @@
 import {createI18nInstance} from './i18n.js';
-import {css, html, LitElement} from 'lit-element';
+import {css, html} from 'lit-element';
 import {ScopedElementsMixin} from '@open-wc/scoped-elements';
 import * as commonUtils from '@dbp-toolkit/common/utils';
 import {Button, Icon, MiniSpinner} from '@dbp-toolkit/common';
@@ -7,10 +7,11 @@ import * as commonStyles from '@dbp-toolkit/common/styles';
 import {TextSwitch} from './textswitch.js';
 import { send } from '@dbp-toolkit/common/notification';
 import environment from 'consts:environment';
+import {AdapterLitElement} from "@dbp-toolkit/provider/src/adapter-lit-element";
 
 const i18n = createI18nInstance();
 
-class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
+class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     constructor() {
         super();
         this.lang = i18n.language;
@@ -37,7 +38,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
     }
 
     static get properties() {
-        return {
+        return Object.assign({
             lang: { type: String },
             entryPointUrl: { type: String, attribute: 'entry-point-url' },
             access_token: { type: String, attribute: false },
@@ -50,7 +51,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(LitElement) {
             itemsNotAvailable: { type: Array, attribute: false },
             gridContainer: { type: String, attribute: false },
             imageSrc: { type: String, attribute: false },
-        };
+        }, super.properties);
     }
 
     connectedCallback() {

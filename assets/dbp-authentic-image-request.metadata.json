@@ -13,5 +13,6 @@
   "description": {
     "de": "Lädt ein offizielles Dokument von einer staatlichen Behörde herunter",
     "en": "Loads an official document from a state authority"
-  }
+  },
+  "subscribe": "lang:lang,entry-point-url:global-entry-point-url"
 }
