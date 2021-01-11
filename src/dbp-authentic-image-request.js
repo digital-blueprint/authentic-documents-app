@@ -65,9 +65,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
                     i18n.changeLanguage(this.lang);
                     break;
             }
-            super.update(changedProperties);
             // console.log(propName, oldValue);
         });
+        super.update(changedProperties);
 
     }
 
@@ -241,7 +241,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             .header {
                 display: grid;
                 align-items: center;
-                grid-template-columns: 1 40px;
+                grid-template-columns: 1fr 40px;
                 gap: 10px;
             }
             
