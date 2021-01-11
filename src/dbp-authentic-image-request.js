@@ -241,7 +241,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             .header {
                 display: grid;
                 align-items: center;
-                grid-template-columns: 1fr 40px;
+                grid-template-columns: 1fr auto;
                 gap: 10px;
             }
             
