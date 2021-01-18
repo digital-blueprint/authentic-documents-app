@@ -94,9 +94,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         let response = await fetch(url, options).then(result => {
             if (!result.ok) throw result;
             return result.json();
-        }).catch(error => {
-                console.log("fetch error:", error);
-            });
+        });
 
         return response;
     }
@@ -142,7 +140,18 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         const url = this.entryPointUrl + '/authentic_document_types?page=1'; 
 
         if (this.access_token !== '') {
-            this.responseFromServer = await this.httpGetAsync(url, options_send_api_request_doc_types);
+            try {
+                this.responseFromServer = await this.httpGetAsync(url, options_send_api_request_doc_types);
+            } catch(e) {
+                if(e.status == 403) {
+                    send({
+                        "body": "eid token expired",
+                        "type": "danger",
+                        "timeout": 10,
+                    });
+                }
+                throw e;
+            }
         }
 
         this.parseAvailableDocumentTypes();
