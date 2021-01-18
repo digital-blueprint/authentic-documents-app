@@ -6,7 +6,6 @@ import {Button, Icon, MiniSpinner} from '@dbp-toolkit/common';
 import * as commonStyles from '@dbp-toolkit/common/styles';
 import {TextSwitch} from './textswitch.js';
 import { send } from '@dbp-toolkit/common/notification';
-import environment from 'consts:environment';
 import {AdapterLitElement} from "@dbp-toolkit/provider/src/adapter-lit-element";
 
 const i18n = createI18nInstance();
@@ -121,13 +120,10 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
                 Authorization: "Bearer " + window.DBPAuthToken
             }
         };
+
         response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options_get_access_token);
 
         if (response && response.access_token) {
-            // XXX: Removes this, just used for demo purposes
-            if (environment !== 'local')
-                response.access_token = 'photo-jpeg-available-token';
-
             this.access_token = response.access_token;
             this.fullResponse = this.parseJwt(response.id_token);
             this.family_name = this.fullResponse.family_name;
