@@ -14,7 +14,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     constructor() {
         super();
         this.lang = i18n.language;
-        this.entryPointUrl = commonUtils.getAPiUrl();
+        this.entryPointUrl = '';
         this.access_token = '';
         this.given_name = '';
         this.family_name = '';
