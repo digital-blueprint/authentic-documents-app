@@ -37,7 +37,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     }
 
     static get properties() {
-        return Object.assign({
+        return {
+            ...super.properties,
             lang: { type: String },
             entryPointUrl: { type: String, attribute: 'entry-point-url' },
             access_token: { type: String, attribute: false },
@@ -50,7 +51,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             itemsNotAvailable: { type: Array, attribute: false },
             gridContainer: { type: String, attribute: false },
             imageSrc: { type: String, attribute: false },
-        }, super.properties);
+        };
     }
 
     connectedCallback() {
