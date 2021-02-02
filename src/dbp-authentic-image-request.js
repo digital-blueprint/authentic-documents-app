@@ -13,6 +13,7 @@ const i18n = createI18nInstance();
 class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     constructor() {
         super();
+        this.auth = {};
         this.lang = i18n.language;
         this.entryPointUrl = '';
         this.access_token = '';
@@ -51,6 +52,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             itemsNotAvailable: { type: Array, attribute: false },
             gridContainer: { type: String, attribute: false },
             imageSrc: { type: String, attribute: false },
+            auth: { type: Object },
         };
     }
 
@@ -116,7 +118,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         //Retrieve token from KC
         const options_get_access_token = {
             headers: {
-                Authorization: "Bearer " + window.DBPAuthToken
+                Authorization: "Bearer " + this.auth.token
             }
         };
 
@@ -134,7 +136,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/ld+json',
-                'Authorization': 'Bearer ' + window.DBPAuthToken,
+                'Authorization': 'Bearer ' + this.auth.token,
                 'Token': this.access_token,
             }};
 
@@ -164,7 +166,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/ld+json',
-                'Authorization': 'Bearer ' + window.DBPAuthToken,
+                'Authorization': 'Bearer ' + this.auth.token,
             }
         };
 
@@ -189,7 +191,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         let response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + window.DBPAuthToken,
+                'Authorization': 'Bearer ' + this.auth.token,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(body),
@@ -215,7 +217,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     async buttonPressShowDocument(event, data) {
         const options = {
             headers: {
-                Authorization: "Bearer " + window.DBPAuthToken,
+                Authorization: "Bearer " + this.auth.token,
                 Accept: 'application/ld+json',
                 Token: this.access_token,
             }
