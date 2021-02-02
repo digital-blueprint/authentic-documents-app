@@ -177,7 +177,7 @@ Dependencies:
           host: '127.0.0.1',
           port: 8001,
           historyApiFallback: config.basePath + pkg.name + '.html',
-          https: useHTTPS ? generateTLSConfig() : false,
+          https: useHTTPS ? await generateTLSConfig() : false,
             headers: {
                 'Content-Security-Policy': config.CSP
             },
