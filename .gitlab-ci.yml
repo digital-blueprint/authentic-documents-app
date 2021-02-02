@@ -16,6 +16,9 @@ before_script:
 stages:
   - test
   - deploy
+  - e2e-stage1
+  - e2e-stage2
+  - e2e-stage3
 
 test:
   stage: test
