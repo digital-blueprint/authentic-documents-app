@@ -193,6 +193,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             headers: {
                 'Authorization': 'Bearer ' + this.auth.token,
                 'Content-Type': 'application/json',
+                'Token': this.access_token,
             },
             body: JSON.stringify(body),
         });
