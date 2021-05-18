@@ -125,6 +125,9 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options_get_access_token);
 
         if (response && response.access_token) {
+            // XXX: demo
+            response.access_token = 'photo-jpeg-available-token';
+
             this.access_token = response.access_token;
             this.fullResponse = this.parseJwt(response.id_token);
             this.family_name = this.fullResponse.family_name;
