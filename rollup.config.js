@@ -57,7 +57,7 @@ export default (async () => {
     let privatePath = await getDistPath(pkg.name)
     return {
     input: (appEnv != 'test') ? [
-      'src/' + pkg.name + '.js',
+      'src/' + pkg.internalName + '.js',
       'src/dbp-authentic-image-request.js',
     ] : glob.sync('test/**/*.js'),
     output: {
@@ -90,7 +90,7 @@ export default (async () => {
             getPrivateUrl: (p) => {
                 return url.resolve(`${config.basePath}${privatePath}/`, p);
             },
-            name: pkg.name,
+            name: pkg.internalName,
             entryPointURL: config.entryPointURL,
             keyCloakServer: config.keyCloakServer,
             keyCloakBaseURL: config.keyCloakBaseURL,
@@ -141,7 +141,7 @@ Dependencies:
             targets: [
                 {src: 'assets/silent-check-sso.html', dest:'dist'},
                 {src: 'assets/htaccess-shared', dest: 'dist/shared/', rename: '.htaccess'},
-                {src: 'assets/manifest.json', dest: 'dist', rename: pkg.name + '.manifest.json'},
+                {src: 'assets/manifest.json', dest: 'dist', rename: pkg.internalName + '.manifest.json'},
                 {src: 'assets/*.metadata.json', dest: 'dist'},
                 {src: 'assets/*.css', dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: 'assets/*.ico', dest: 'dist/' + await getDistPath(pkg.name)},
@@ -172,7 +172,7 @@ Dependencies:
           contentBase: '.',
           host: '127.0.0.1',
           port: 8001,
-          historyApiFallback: config.basePath + pkg.name + '.html',
+          historyApiFallback: config.basePath + pkg.internalName + '.html',
           https: useHTTPS ? await generateTLSConfig() : false,
             headers: {
                 'Content-Security-Policy': config.CSP
