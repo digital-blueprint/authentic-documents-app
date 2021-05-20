@@ -86,7 +86,7 @@ deploy_production:
 
 e2e_tests:
   variables:
-    PROJECT: authentic-document
+    E2E_PROJECT: authentic-document
   stage: test
   trigger:
     project: dbp/e2e-tests
