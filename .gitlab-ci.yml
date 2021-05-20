@@ -90,4 +90,5 @@ e2e_tests:
   stage: test
   trigger:
     project: dbp/e2e-tests
+    branch: multi-test
     strategy: depend
