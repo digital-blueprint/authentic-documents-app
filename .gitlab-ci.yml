@@ -97,9 +97,12 @@ deploy_production:
   <<: *deploy_defaults
 
 e2e_tests:
+  only:
+    refs:
+      - master
   variables:
     E2E_PROJECT: authentic-document
-  stage: test
+  stage: e2e
   trigger:
     project: dbp/e2e-tests
     strategy: depend
