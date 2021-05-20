@@ -1,4 +1,4 @@
-image: registry.gitlab.tugraz.at/dbp/topics/authenticdocument/main:v1
+image: registry.gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/main:v1
 
 cache:
   key: $CI_PROJECT_PATH
