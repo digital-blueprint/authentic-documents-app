@@ -98,7 +98,9 @@ export default (async () => {
             CSP: config.CSP,
             matomoUrl: config.matomoUrl,
             matomoSiteId: config.matomoSiteId,
-            buildInfo: getBuildInfo(appEnv)
+            buildInfo: getBuildInfo(appEnv),
+            siteName: config.siteName,
+            siteSubName: config.siteSubName
           }
         }),
         resolve({

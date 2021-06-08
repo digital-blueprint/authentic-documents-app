@@ -6,6 +6,8 @@ export default {
         keyCloakClientId: 'auth-dev-mw-frontend-local',
         matomoUrl: 'https://analytics.tugraz.at/',
         matomoSiteId: 131,
+        siteName: 'TU Graz',
+        siteSubName: 'Graz University of Technology'
     },
     development: {
         basePath: '/apps/authenticdocument/',
@@ -14,6 +16,8 @@ export default {
         keyCloakClientId: 'authenticdocument-dev_tugraz_at-AUTHENTICDOCUMENT',
         matomoUrl: 'https://analytics.tugraz.at/',
         matomoSiteId: 131,
+        siteName: 'TU Graz',
+        siteSubName: 'Graz University of Technology'
     },
     demo: {
         basePath: '/apps/authenticdocument/',
@@ -22,6 +26,8 @@ export default {
         keyCloakClientId: 'authenticdocument-demo_tugraz_at',
         matomoUrl: 'https://analytics.tugraz.at/',
         matomoSiteId: 131,
+        siteName: 'TU Graz',
+        siteSubName: 'Graz University of Technology'
     },
     production: {
         basePath: '/',
@@ -30,5 +36,7 @@ export default {
         keyCloakClientId: 'authenticdocument_tugraz_at',
         matomoUrl: 'https://analytics.tugraz.at/',
         matomoSiteId: 131,
+        siteName: 'TU Graz',
+        siteSubName: 'Graz University of Technology'
     },
 };
