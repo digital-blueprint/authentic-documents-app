@@ -2,7 +2,7 @@
   "authentic-image-request": {
     "title": "Dokumente aus offiziellen Quellen übernehmen",
     "request-button": "Dokument laden",
-    "description": "Erlaubt es offizielle Dokumente von einer staatlichen Behörde anzufordern und diese an dritte freizugeben.",
+    "description": "Erlaubt es offizielle Dokumente von einer staatlichen Behörde anzufordern und diese an Dritte freizugeben.",
     "available-documents": "Verfügbare Dokumente für",
     "retrieve-token": "Verfügbare Dokumente anzeigen",
     "request-document": "Dokument freigeben",
