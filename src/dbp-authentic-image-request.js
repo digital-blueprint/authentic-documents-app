@@ -7,6 +7,8 @@ import * as commonStyles from '@dbp-toolkit/common/styles';
 import {TextSwitch} from './textswitch.js';
 import { send } from '@dbp-toolkit/common/notification';
 import {AdapterLitElement} from "@dbp-toolkit/provider/src/adapter-lit-element";
+import {Activity} from './activity.js';
+import metadata from './dbp-authentic-image-request.metadata.json';
 
 const i18n = createI18nInstance();
 
@@ -270,22 +272,36 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             
             h2:first-child {
                 margin-top: 0px;
+                margin-bottom: 0px;
             }
 
             h2 {
                 margin-bottom: 10px;
             }
+
+            .subheadline{
+                font-style: italic;
+                padding-left: 2em;
+                margin-top: -1px;
+                /*line-height: 1.8;*/
+                margin-bottom: 1.2em;
+            }
         `;
     }
 
     render() {
+        const activity = new Activity(metadata);
+
         return html`
            <h2>${i18n.t('authentic-image-request.title')}</h2>
+           <p class="subheadline">
+               ${activity.getDescription(this.lang)}
+           </p>
            <p>${i18n.t('authentic-image-request.description')}</p>
            <button class="button is-primary" @click="${this.retrieveToken}" title="${i18n.t('authentic-image-request.request-button')}">${i18n.t('authentic-image-request.retrieve-token')}</button>
            
            <div id="grid-container" class="border" style="${this.gridContainer}">
-                <h2 id="doc-headline" >${i18n.t('authentic-image-request.available-documents')} ${this.given_name} ${this.family_name}:</h2>
+                <h3 id="doc-headline" >${i18n.t('authentic-image-request.available-documents')} ${this.given_name} ${this.family_name}:</h3>
                 <div id="documents">
                     ${this.itemsRequested.map(i => html`<span class="header"><strong>${i['name']}</strong>${i18n.t('authentic-image-request.request-text')}.</span> 
                     <button id="btn-${i['identifier']}" class="button is-primary" @click="${(e) => this.buttonPressSuccessMessage(e, i)}" >${i18n.t('authentic-image-request.request-document')}</button>

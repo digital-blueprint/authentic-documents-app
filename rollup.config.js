@@ -142,7 +142,7 @@ Dependencies:
                 {src: 'assets/silent-check-sso.html', dest:'dist'},
                 {src: 'assets/htaccess-shared', dest: 'dist/shared/', rename: '.htaccess'},
                 {src: 'assets/manifest.json', dest: 'dist', rename: pkg.internalName + '.manifest.json'},
-                {src: 'assets/*.metadata.json', dest: 'dist'},
+                {src: 'src/*.metadata.json', dest: 'dist'},
                 {src: 'assets/*.css', dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: 'assets/*.ico', dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: 'assets/*.svg', dest: 'dist/' + await getDistPath(pkg.name)},
