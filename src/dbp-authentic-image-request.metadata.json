@@ -11,7 +11,7 @@
     "en": "Share official documents"
   },
   "description": {
-    "de": "Lädt ein offizielles Dokument von einer staatlichen Behörde herunter",
+    "de": "Lädt ein offizielles Dokument von einem staatlichen Register herunter",
     "en": "Loads an official document from a state authority"
   },
   "subscribe": "lang:lang,entry-point-url:entry-point-url,auth:auth"
