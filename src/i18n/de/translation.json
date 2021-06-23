@@ -9,8 +9,8 @@
     "show-document": "Dokument anzeigen",
     "request-success-title": "Erfolgreich angefordert",
     "request-success-body": "Das angeforderte Dokument ('{{name}}') wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt.",
-    "available-text": "Für die Verwendung an der TU Graz freigeben",
-    "request-text": "Anfordern und für die Verwendung an der TU Graz freigeben",
+    "available-text": "Für die Verwendung an der Hochschule freigeben",
+    "request-text": "Anfordern und für die Verwendung an der Hochschule freigeben",
     "not-available-text": "Nicht verfügbar. Bitte wenden Sie sich an den IT-Support"
   }
 }
