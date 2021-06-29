@@ -111,3 +111,6 @@ for example like this:
 ```
 
 Note that you will need a Keycloak server along with a client id for the domain you are running this html on.
+
+## Design Note
+To ensure a uniform and responsive design the activity should occupy 100% of the window width when the activity width is less than 768 px.
