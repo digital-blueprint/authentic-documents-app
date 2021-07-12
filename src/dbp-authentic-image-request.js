@@ -1,4 +1,4 @@
-import {createI18nInstance} from './i18n.js';
+import {createInstance} from './i18n.js';
 import {css, html} from 'lit-element';
 import {ScopedElementsMixin} from '@open-wc/scoped-elements';
 import * as commonUtils from '@dbp-toolkit/common/utils';
@@ -10,13 +10,12 @@ import {AdapterLitElement} from "@dbp-toolkit/provider/src/adapter-lit-element";
 import {Activity} from './activity.js';
 import metadata from './dbp-authentic-image-request.metadata.json';
 
-const i18n = createI18nInstance();
-
 class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     constructor() {
         super();
+        this._i18n = createInstance();
         this.auth = {};
-        this.lang = i18n.language;
+        this.lang = this._i18n.language;
         this.entryPointUrl = '';
         this.access_token = '';
         this.given_name = '';
@@ -66,7 +65,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         changedProperties.forEach((oldValue, propName) => {
             switch (propName) {
                 case "lang":
-                    i18n.changeLanguage(this.lang);
+                    this._i18n.changeLanguage(this.lang);
                     break;
             }
             // console.log(propName, oldValue);
@@ -213,8 +212,8 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
         console.log(arrivalDate.toLocaleString());
 
         send({
-            "summary": i18n.t('authentic-image-request.request-success-title'),
-            "body": i18n.t('authentic-image-request.request-success-body', { name: entry['name'] }),
+            "summary": this._i18n.t('authentic-image-request.request-success-title'),
+            "body": this._i18n.t('authentic-image-request.request-success-body', { name: entry['name'] }),
             "type": "success",
             "timeout": 10,
         });
@@ -291,6 +290,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
 
     render() {
         const activity = new Activity(metadata);
+        const i18n = this._i18n;
 
         return html`
            <h2>${i18n.t('authentic-image-request.title')}</h2>
