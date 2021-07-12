@@ -147,6 +147,8 @@ Dependencies:
                 {src: 'assets/*.ico', dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: 'assets/*.svg', dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: 'assets/icon-*.png', dest: 'dist/' + await getDistPath(pkg.name)},
+                {src: 'assets/apple-*.png', dest: 'dist/' + await getDistPath(pkg.name)},
+                {src: 'assets/safari-*.svg', dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: await getPackagePath('@dbp-toolkit/font-source-sans-pro', 'files/*'), dest: 'dist/local/' + pkg.name + '/fonts/source-sans-pro'},
                 {src: await getPackagePath('@dbp-toolkit/common', 'src/spinner.js'), dest: 'dist/' + await getDistPath(pkg.name)},
                 {src: await getPackagePath('@dbp-toolkit/common', 'misc/browser-check.js'), dest: 'dist/' + await getDistPath(pkg.name)},
