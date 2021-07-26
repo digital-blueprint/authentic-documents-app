@@ -1,7 +1,7 @@
 {
   "name": "@dbp-topics/authentic-document",
   "internalName": "dbp-authentic-document",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "src/dbp-authentic-document.js",
   "license": "LGPL-2.1-or-later",
   "repository": {
