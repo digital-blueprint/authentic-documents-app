@@ -123,7 +123,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             }
         };
 
-        response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz/broker/eid-oidc/token', options_get_access_token);
+        response = await this.httpGetAsync('https://auth-dev.tugraz.at/auth/realms/tugraz-vpu/broker/eid-oidc/token', options_get_access_token);
 
         if (response && response.access_token) {
             // XXX: demo
