@@ -20,9 +20,9 @@ export default {
     demo: {
         basePath: '/apps/authenticdocument/',
         entryPointURL: 'https://api-demo.tugraz.at',
-        keyCloakBaseURL: 'https://auth-test.tugraz.at/auth',
-        keyCloakRealm: 'tugraz',
-        keyCloakClientId: 'authenticdocument-demo_tugraz_at',
+        keyCloakBaseURL: 'https://auth-demo.tugraz.at/auth',
+        keyCloakRealm: 'tugraz-vpu',
+        keyCloakClientId: 'dbp-authentic-documents',
         matomoUrl: 'https://analytics.tugraz.at/',
         matomoSiteId: 131,
     },
