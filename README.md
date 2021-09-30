@@ -28,10 +28,10 @@ Jump to <http://localhost:8001> and you should get a Single Sign On login page.
 
 ### Install app
 
-If you want to install the DBP Authentic Document App in a new folder `authentic-document-app` you can call:
+If you want to install the DBP Authentic Document App in a new folder `authentic-document-app` with a path prefix `/` you can call:
 
 ```bash
-npx @digital-blueprint/cli install-app authentic-document authentic-document-app
+npx @digital-blueprint/cli install-app authentic-document authentic-document-app /
 ```
 
 Afterwards you can point your Apache web-server to `authentic-document-app/public`.
