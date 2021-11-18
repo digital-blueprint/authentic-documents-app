@@ -67,18 +67,24 @@
     keycloak-config='{"url": "https://auth-dev.tugraz.at/auth", "realm": "tugraz-vpu", "clientId": "auth-dev-mw-frontend-local", "silentCheckSsoRedirectUri": "/silent-check-sso.html"}'
     env='local'
 ><dbp-loading-spinner></dbp-loading-spinner>
-<template slot="name">
-    DBP<br />
-    <dbp-translated subscribe="lang">
-        <div slot="de">
-            Meine Universität
-        </div>
-        <div slot="en">
-            My University
-        </div>
-    </dbp-translated>
-</template>
+
 </dbp-authentic-document>
+
+<template id="global-override">
+    <template id="dbp-authentic-document">
+        <template slot="name">
+            DBP<br />
+            <dbp-translated subscribe="lang">
+                <div slot="de">
+                    Meine Universität
+                </div>
+                <div slot="en">
+                    My University
+                </div>
+            </dbp-translated>
+        </template>
+    </template>
+</template>
 
 <!-- Error handling for too old browsers -->
 <script src="/app/local/@dbp-topics/authentic-document/browser-check.js" defer></script>
