@@ -54,6 +54,10 @@ If you want to update the DBP Authentic Document App in the current folder you c
 npx @digital-blueprint/cli update-app authentic-document
 ```
 
+## "dbp-greenlight" Slots
+
+These are common slots for the appshell. You can find the documentation of these slot in the `README.md` of the appshell webcomponent.
+
 ## Design Note
 
 To ensure a uniform and responsive design the activity should occupy 100% of the window width when the activity width is less than 768 px.
