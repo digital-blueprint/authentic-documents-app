@@ -54,7 +54,7 @@ If you want to update the DBP Authentic Document App in the current folder you c
 npx @digital-blueprint/cli update-app authentic-document
 ```
 
-## "dbp-greenlight" Slots
+## "dbp-authentic-document" Slots
 
 These are common slots for the appshell. You can find the documentation of these slot in the `README.md` of the appshell webcomponent.
 
