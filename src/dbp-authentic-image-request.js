@@ -259,7 +259,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
             }
             
             .border {
-                border-top: 1px solid black;
+                border-top: var(--dbp-border);
             }
             
             #grid-container {
