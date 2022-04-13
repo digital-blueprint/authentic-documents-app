@@ -1,16 +1,16 @@
 {
     "authentic-image-request": {
-        "title": "Dokumente aus offiziellen Quellen übernehmen",
-        "request-button": "Dokument laden",
-        "description": "Erlaubt es offizielle Dokumente von einem staatlichen Register anzufordern und diese an Dritte freizugeben.",
         "available-documents": "Verfügbare Dokumente für",
-        "retrieve-token": "Verfügbare Dokumente anzeigen",
-        "request-document": "Dokument freigeben",
-        "show-document": "Dokument anzeigen",
-        "request-success-title": "Erfolgreich angefordert",
-        "request-success-body": "Das angeforderte Dokument ('{{name}}') wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt.",
         "available-text": "Für die Verwendung an der Hochschule freigeben",
+        "description": "Erlaubt es offizielle Dokumente von einem staatlichen Register anzufordern und diese an Dritte freizugeben.",
+        "not-available-text": "Nicht verfügbar. Bitte wenden Sie sich an den IT-Support",
+        "request-button": "Dokument laden",
+        "request-document": "Dokument freigeben",
+        "request-success-body": "Das angeforderte Dokument ('{{name}}') wird abgerufen, sobald es verfügbar ist. Sie werden per E-Mail über den weiteren Verlauf verständigt.",
+        "request-success-title": "Erfolgreich angefordert",
         "request-text": "Anfordern und für die Verwendung an der Hochschule freigeben",
-        "not-available-text": "Nicht verfügbar. Bitte wenden Sie sich an den IT-Support"
+        "retrieve-token": "Verfügbare Dokumente anzeigen",
+        "show-document": "Dokument anzeigen",
+        "title": "Dokumente aus offiziellen Quellen übernehmen"
     }
 }
