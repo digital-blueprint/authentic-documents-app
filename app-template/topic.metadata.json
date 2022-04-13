@@ -1,19 +1,17 @@
 {
-  "name": {
-    "de": "Offizielle Dokumente",
-    "en": "Authentic Document"
-  },
-  "short_name": {
-    "de": "Offizielle Dokumente",
-    "en": "Authentic Document"
-  },
-  "description": {
-    "de": "Mit dieser Applikation können Sie Dokumente aus offiziellen Quellen freigeben.",
-    "en": "With this application you can share documents from authentic sources."
-  },
-  "routing_name": "authentic-document",
-  "activities": [
-    {"path": "/app/dbp-authentic-image-request.metadata.json"}
-  ],
-  "attributes": []
+    "name": {
+        "de": "Offizielle Dokumente",
+        "en": "Authentic Document"
+    },
+    "short_name": {
+        "de": "Offizielle Dokumente",
+        "en": "Authentic Document"
+    },
+    "description": {
+        "de": "Mit dieser Applikation können Sie Dokumente aus offiziellen Quellen freigeben.",
+        "en": "With this application you can share documents from authentic sources."
+    },
+    "routing_name": "authentic-document",
+    "activities": [{"path": "/app/dbp-authentic-image-request.metadata.json"}],
+    "attributes": []
 }

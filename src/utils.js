@@ -5,8 +5,8 @@
  * @param results
  * @param identifierAttribute
  */
-export const findObjectInApiResults = (identifier, results, identifierAttribute = "@id") => {
-    const members = results["hydra:member"];
+export const findObjectInApiResults = (identifier, results, identifierAttribute = '@id') => {
+    const members = results['hydra:member'];
 
     if (members === undefined) {
         return;
@@ -20,7 +20,7 @@ export const findObjectInApiResults = (identifier, results, identifierAttribute 
 };
 
 export const getPDFFileBase64Content = (file) => {
-    return file.contentUrl.replace(/data:\s*application\/pdf;\s*base64,/, "");
+    return file.contentUrl.replace(/data:\s*application\/pdf;\s*base64,/, '');
 };
 
 export const convertDataURIToBinary = (dataURI) => {
@@ -31,7 +31,7 @@ export const convertDataURIToBinary = (dataURI) => {
     const rawLength = raw.length;
     let array = new Uint8Array(rawLength);
 
-    for(let i = 0; i < rawLength; i++) {
+    for (let i = 0; i < rawLength; i++) {
         array[i] = raw.charCodeAt(i);
     }
 
@@ -45,17 +45,15 @@ export const getDataURIContentType = (dataURI) => {
     return dataURI.substring(5, base64Index);
 };
 
-export const baseName = (str) =>
-{
+export const baseName = (str) => {
     let base = String(str).substring(str.lastIndexOf('/') + 1);
 
-    if (base.lastIndexOf(".") !== -1) {
-        base = base.substring(0, base.lastIndexOf("."));
+    if (base.lastIndexOf('.') !== -1) {
+        base = base.substring(0, base.lastIndexOf('.'));
     }
 
     return base;
 };
-
 
 export const fabricjs2pdfasPosition = (data) => {
     let angle = -(data.angle - 360) % 360;
@@ -77,6 +75,6 @@ export const fabricjs2pdfasPosition = (data) => {
         x: Math.round(left),
         r: angle,
         w: Math.round(data.width), // only width, no "height" allowed in PDF-AS
-        p: data.currentPage
+        p: data.currentPage,
     };
 };

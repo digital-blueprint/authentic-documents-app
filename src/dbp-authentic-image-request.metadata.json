@@ -1,18 +1,18 @@
 {
-  "element": "dbp-authentic-image-request",
-  "module_src": "dbp-authentic-image-request.js",
-  "routing_name": "authentic-image-request",
-  "name": {
-    "de": "Dokumente aus offiziellen Quellen freigeben",
-    "en": "Share documents from authentic sources"
-  },
-  "short_name": {
-    "de": "Offizielle Dokumente freigeben",
-    "en": "Share official documents"
-  },
-  "description": {
-    "de": "Lädt ein offizielles Dokument von einem staatlichen Register herunter",
-    "en": "Loads an official document from a state authority"
-  },
-  "subscribe": "lang:lang,entry-point-url:entry-point-url,auth:auth"
+    "element": "dbp-authentic-image-request",
+    "module_src": "dbp-authentic-image-request.js",
+    "routing_name": "authentic-image-request",
+    "name": {
+        "de": "Dokumente aus offiziellen Quellen freigeben",
+        "en": "Share documents from authentic sources"
+    },
+    "short_name": {
+        "de": "Offizielle Dokumente freigeben",
+        "en": "Share official documents"
+    },
+    "description": {
+        "de": "Lädt ein offizielles Dokument von einem staatlichen Register herunter",
+        "en": "Loads an official document from a state authority"
+    },
+    "subscribe": "lang:lang,entry-point-url:entry-point-url,auth:auth"
 }
