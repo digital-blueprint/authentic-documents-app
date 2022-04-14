@@ -4,6 +4,11 @@
 [npmjs package](https://www.npmjs.com/package/@dbp-topics/authentic-document) |
 [Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/)
 
+## Prerequisites
+
+- You need the [API server](https://gitlab.tugraz.at/dbp/relay/dbp-relay-server-template) running
+- You need the [Authentic Document Bundle](https://gitlab.tugraz.at/dbp/authentic-documents/api-authentic-document-bundle)
+
 ## Local development
 
 ```bash
