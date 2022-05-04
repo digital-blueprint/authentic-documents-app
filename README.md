@@ -2,7 +2,8 @@
 
 [GitLab Repository](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument) |
 [npmjs package](https://www.npmjs.com/package/@dbp-topics/authentic-document) |
-[Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/)
+[Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/) |
+[Authentic Document Bundle](https://gitlab.tugraz.at/dbp/authentic-documents/api-authentic-document-bundle)
 
 ## Prerequisites
 
