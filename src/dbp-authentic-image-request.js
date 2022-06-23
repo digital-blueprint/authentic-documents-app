@@ -6,7 +6,7 @@ import {Button, Icon, MiniSpinner} from '@dbp-toolkit/common';
 import * as commonStyles from '@dbp-toolkit/common/styles';
 import {TextSwitch} from './textswitch.js';
 import {send} from '@dbp-toolkit/common/notification';
-import {AdapterLitElement} from '@dbp-toolkit/provider/src/adapter-lit-element';
+import {AdapterLitElement} from '@dbp-toolkit/common';
 import {Activity} from './activity.js';
 import metadata from './dbp-authentic-image-request.metadata.json';
 
