@@ -6,7 +6,6 @@ Here you can find the individual activities of the `greenlight` app. If you want
 
 You can use every activity alone. Take a look at our examples [here](https://gitlab.tugraz.at/dbp/greenlight/greenlight/-/tree/main/examples).
 
-
 ## Activities
 
 ### Shared Attributes
