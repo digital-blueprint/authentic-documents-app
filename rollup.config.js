@@ -161,7 +161,7 @@ Dependencies:
                     {src: 'assets/apple-*.png', dest: 'dist/' + (await getDistPath(pkg.name))},
                     {src: 'assets/safari-*.svg', dest: 'dist/' + (await getDistPath(pkg.name))},
                     {
-                        src: await getPackagePath('@dbp-toolkit/font-source-sans-pro', 'files/*'),
+                        src: await getPackagePath('@tugraz/font-source-sans-pro', 'files/*'),
                         dest: 'dist/local/' + pkg.name + '/fonts/source-sans-pro',
                     },
                     {
