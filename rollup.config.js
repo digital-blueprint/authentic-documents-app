@@ -161,6 +161,18 @@ Dependencies:
                         dest: 'dist/local/' + pkg.name + '/fonts/source-sans-pro',
                     },
                     {
+                        src: await getPackagePath('@tugraz/font-source-sans-pro', 'files/*'),
+                        dest: 'dist/' + (await getDistPath(pkg.name, 'fonts/source-sans-pro')),
+                    },
+                    {
+                        src: await getPackagePath('@dbp-toolkit/common', 'src/spinner.js'),
+                        dest: 'dist/' + (await getDistPath(pkg.name)),
+                    },
+                    {
+                        src: await getPackagePath('@tugraz/web-components', 'src/spinner.js'),
+                        dest: 'dist/' + (await getDistPath(pkg.name)), rename: 'tug_spinner.js'
+                    },
+                    {
                         src: await getPackagePath('@dbp-toolkit/common', 'src/spinner.js'),
                         dest: 'dist/' + (await getDistPath(pkg.name)),
                     },

@@ -30,7 +30,7 @@
 
     <!-- Loading spinner -->
     <script type="module">
-        import {Spinner} from '<%= getPrivateUrl('spinner.js') %>';
+        import {Spinner} from '<%= getPrivateUrl('tug_spinner.js') %>';
         customElements.define('tug-spinner', Spinner);
     </script>
 
@@ -107,6 +107,7 @@
     matomo-url="<%= matomoUrl %>"
     matomo-site-id="<%= matomoSiteId %>"
     html-overrides="global-override"
+    themes='[{"class": "light-theme", "icon": "sun", "name": "Light Mode"}]'
 ><tug-spinner id='spinner'></tug-spinner>
 </<%= name %>>
 
