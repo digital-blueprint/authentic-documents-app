@@ -150,16 +150,9 @@ Dependencies:
                     {src: 'assets/htaccess-shared', dest: 'dist/shared/', rename: '.htaccess'},
                     {src: 'src/*.metadata.json', dest: 'dist'},
                     {src: 'assets/*.css', dest: 'dist/' + (await getDistPath(pkg.name))},
-                    {src: 'assets/*.ico', dest: 'dist/' + (await getDistPath(pkg.name))},
                     {src: 'assets/*.svg', dest: 'dist/' + (await getDistPath(pkg.name))},
-                    {src: 'assets/icon-*.png', dest: 'dist/' + (await getDistPath(pkg.name))},
-                    {src: 'assets/apple-*.png', dest: 'dist/' + (await getDistPath(pkg.name))},
-                    {src: 'assets/safari-*.svg', dest: 'dist/' + (await getDistPath(pkg.name))},
+                    {src: 'assets/icon/*', dest: 'dist/' + (await getDistPath(pkg.name, 'icon'))},
                     {src: 'assets/site.webmanifest', dest: 'dist', rename: pkg.internalName + '.webmanifest'},
-                    {
-                        src: await getPackagePath('@tugraz/font-source-sans-pro', 'files/*'),
-                        dest: 'dist/local/' + pkg.name + '/fonts/source-sans-pro',
-                    },
                     {
                         src: await getPackagePath('@tugraz/font-source-sans-pro', 'files/*'),
                         dest: 'dist/' + (await getDistPath(pkg.name, 'fonts/source-sans-pro')),
