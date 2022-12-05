@@ -50,7 +50,7 @@ Also make sure to add all of your resources you are using (like your API and Key
 `Content-Security-Policy` in your `authentic-document-app/public/.htaccess`, so the browser allows access to those sites.
 
 You can also use this app directly from the [Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/)
-for example like this: [dbp-authentic-document/index.html](https://gitlab.tugraz.at/dbp/authentic-documents/authentic-document/-/tree/master/examples/dbp-authentic-document/index.html)
+for example like this: [dbp-authentic-document/index.html](https://gitlab.tugraz.at/dbp/authentic-documents/authentic-document/-/tree/main/examples/dbp-authentic-document/index.html)
 
 Note that you will need a Keycloak server along with a client id for the domain you are running this html on.
 
@@ -67,7 +67,7 @@ npx @digital-blueprint/cli update-app authentic-document
 This app has the following activities:
 - `dbp-authentic-image-request`
 
-You can find the documentation of these activities in the [authentic documents activities documentation](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/-/tree/master/src).
+You can find the documentation of these activities in the [authentic documents activities documentation](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/-/tree/main/src).
 
 ## Adapt app
 
@@ -77,15 +77,15 @@ You can add multiple attributes to the `<dbp-greenlight>` tag.
 
 | attribute name | value | Link to description |
 |----------------|-------| ------------|
-| `provider-root` | Boolean | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/app-shell#attributes) |
-| `lang`         | String | [language-select](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/language-select#attributes) | 
-| `entry-point-url` | String | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/app-shell#attributes) |
-| `keycloak-config` | Object | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/app-shell#attributes) |
-| `base-path` | String | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/app-shell#attributes) |
-| `src` | String | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/app-shell#attributes) |
-| `html-overrides` | String | [common](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/common#overriding-slots-in-nested-web-components) |
-| `themes` | Array | [theme-switcher](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/theme-switcher#themes-attribute) |
-| `darkModeThemeOverride` | String | [theme-switcher](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/theme-switcher#themes-attribute) |
+| `provider-root` | Boolean | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell#attributes) |
+| `lang`         | String | [language-select](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/language-select#attributes) | 
+| `entry-point-url` | String | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell#attributes) |
+| `keycloak-config` | Object | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell#attributes) |
+| `base-path` | String | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell#attributes) |
+| `src` | String | [app-shell](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell#attributes) |
+| `html-overrides` | String | [common](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/common#overriding-slots-in-nested-web-components) |
+| `themes` | Array | [theme-switcher](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/theme-switcher#themes-attribute) |
+| `darkModeThemeOverride` | String | [theme-switcher](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/theme-switcher#themes-attribute) |
 
 #### Mandatory attributes
 
@@ -107,5 +107,5 @@ For frontend design customizations, such as logo, colors, font, favicon, and mor
 
 ## "dbp-authentic-document" slots
 
-These are common slots for the app-shell. You can find the documentation of these slots in the [app-shell documentation](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/master/packages/app-shell).
-For the app specific slots take a look at the [authentic documents activities](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/-/tree/master/src).
+These are common slots for the app-shell. You can find the documentation of these slots in the [app-shell documentation](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell).
+For the app specific slots take a look at the [authentic documents activities](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/-/tree/main/src).
