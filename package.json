@@ -6,7 +6,7 @@
     "license": "LGPL-2.1-or-later",
     "repository": {
         "type": "git",
-        "url": "https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument.git"
+        "url": "https://github.com/digital-blueprint/authentic-documents-app.git"
     },
     "private": true,
     "workspaces": [

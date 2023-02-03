@@ -1,6 +1,6 @@
 # Authentic Documents Application
 
-[GitLab Repository](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument) |
+[GitHub Repository](https://github.com/digital-blueprint/authentic-documents-app) |
 [npmjs package](https://www.npmjs.com/package/@dbp-topics/authentic-document) |
 [Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/) |
 [Authentic Document Bundle](https://gitlab.tugraz.at/dbp/authentic-documents/api-authentic-document-bundle)
@@ -18,7 +18,7 @@ This is a **WORK IN PROGRESS** and not meant for public use yet!
 
 ```bash
 # get the source
-git clone git@gitlab.tugraz.at:dbp/authentic-documents/authenticdocument.git
+git clone git@github.com:digital-blueprint/authentic-documents-app.git
 cd authenticdocument
 git submodule update --init
 
@@ -69,7 +69,7 @@ npx @digital-blueprint/cli update-app authentic-document
 This app has the following activities:
 - `dbp-authentic-image-request`
 
-You can find the documentation of these activities in the [authentic documents activities documentation](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/-/tree/main/src).
+You can find the documentation of these activities in the [authentic documents activities documentation](https://github.com/digital-blueprint/authentic-documents-app/tree/main/src).
 
 ## Adapt app
 
@@ -110,4 +110,4 @@ For frontend design customizations, such as logo, colors, font, favicon, and mor
 ## "dbp-authentic-document" slots
 
 These are common slots for the app-shell. You can find the documentation of these slots in the [app-shell documentation](https://gitlab.tugraz.at/dbp/web-components/toolkit/-/tree/main/packages/app-shell).
-For the app specific slots take a look at the [authentic documents activities](https://gitlab.tugraz.at/dbp/authentic-documents/authenticdocument/-/tree/main/src).
+For the app specific slots take a look at the [authentic documents activities](https://github.com/digital-blueprint/authentic-documents-app/tree/main/src).
