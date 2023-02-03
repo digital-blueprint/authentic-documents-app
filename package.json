@@ -1,5 +1,5 @@
 {
-    "name": "@dbp-topics/authentic-document",
+    "name": "@digital-blueprint/authentic-documents-app",
     "internalName": "dbp-authentic-document",
     "version": "1.0.18",
     "main": "src/dbp-authentic-document.js",

@@ -1,8 +1,8 @@
 # Authentic Documents Application
 
 [GitHub Repository](https://github.com/digital-blueprint/authentic-documents-app) |
-[npmjs package](https://www.npmjs.com/package/@dbp-topics/authentic-document) |
-[Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/) |
+[npmjs package](https://www.npmjs.com/package/@digital-blueprint/authentic-documents-app) |
+[Unpkg CDN](https://unpkg.com/browse/@digital-blueprint/authentic-documents-app/) |
 [Authentic Document Bundle](https://gitlab.tugraz.at/dbp/authentic-documents/api-authentic-document-bundle)
 
 With dbp authentic documents you can request official documents from a government registry and release them to third parties.
@@ -51,7 +51,7 @@ Make sure you are allowing `.htaccess` files in your Apache configuration.
 Also make sure to add all of your resources you are using (like your API and Keycloak servers) to the
 `Content-Security-Policy` in your `authentic-document-app/public/.htaccess`, so the browser allows access to those sites.
 
-You can also use this app directly from the [Unpkg CDN](https://unpkg.com/browse/@dbp-topics/authentic-document/)
+You can also use this app directly from the [Unpkg CDN](https://unpkg.com/browse/@digital-blueprint/authentic-documents-app/)
 for example like this: [dbp-authentic-document/index.html](https://gitlab.tugraz.at/dbp/authentic-documents/authentic-document/-/tree/main/examples/dbp-authentic-document/index.html)
 
 Note that you will need a Keycloak server along with a client id for the domain you are running this html on.
