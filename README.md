@@ -5,6 +5,8 @@
 [Unpkg CDN](https://unpkg.com/browse/@digital-blueprint/authentic-documents-app/) |
 [Authentic Document Bundle](https://gitlab.tugraz.at/dbp/authentic-documents/api-authentic-document-bundle)
 
+[![Build and Test](https://github.com/digital-blueprint/authentic-documents-app/actions/workflows/build-test-publish.yml/badge.svg)](https://github.com/digital-blueprint/authentic-documents-app/actions/workflows/build-test-publish.yml)
+
 With dbp authentic documents you can request official documents from a government registry and release them to third parties.
 
 This is a **WORK IN PROGRESS** and not meant for public use yet!
