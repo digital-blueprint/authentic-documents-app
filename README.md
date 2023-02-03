@@ -7,6 +7,8 @@
 
 With dbp authentic documents you can request official documents from a government registry and release them to third parties.
 
+This is a **WORK IN PROGRESS** and not meant for public use yet!
+
 ## Prerequisites
 
 - You need the [API server](https://gitlab.tugraz.at/dbp/relay/dbp-relay-server-template) running
