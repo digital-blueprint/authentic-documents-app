@@ -1,7 +1,7 @@
 {
     "name": "@digital-blueprint/authentic-documents-app",
     "internalName": "dbp-authentic-document",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "main": "src/dbp-authentic-document.js",
     "license": "LGPL-2.1-or-later",
     "repository": {
