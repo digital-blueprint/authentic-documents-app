@@ -58,7 +58,7 @@
         "@tugraz/web-components": "^0.3.6",
         "@webcomponents/scoped-custom-element-registry": "^0.0.9",
         "fabric": "^5.0.0",
-        "i18next": "^22.0.0",
+        "i18next": "^23.0.0",
         "jszip": "^3.5.0",
         "lit": "^2.0.0",
         "universal-router": "^9.0.1"
