@@ -21,7 +21,7 @@ This is a **WORK IN PROGRESS** and not meant for public use yet!
 ```bash
 # get the source
 git clone git@github.com:digital-blueprint/authentic-documents-app.git
-cd authenticdocument
+cd authentic-documents-app
 git submodule update --init
 
 # install dependencies
