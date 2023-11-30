@@ -74,12 +74,7 @@ class AuthenticImageRequest extends ScopedElementsMixin(AdapterLitElement) {
     }
 
     parseAvailableDocumentTypes() {
-        let numTypes = parseInt(this.responseFromServer['hydra:totalItems']);
-        if (isNaN(numTypes)) {
-            numTypes = 0;
-        }
-
-        for (let i = 0; i < numTypes; i++) {
+        for (let i = 0; i < this.responseFromServer['hydra:member'].length; i++) {
             let entry = this.responseFromServer['hydra:member'][i];
 
             if (entry['availabilityStatus'] === 'available') {
