@@ -1,6 +1,5 @@
 /**
  * Finds an object in a JSON result by identifier
- *
  * @param identifier
  * @param results
  * @param identifierAttribute

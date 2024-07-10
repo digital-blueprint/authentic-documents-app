@@ -1,6 +1,6 @@
-import path from 'path';
-import url from 'url';
-import { globSync } from 'glob'
+import url from 'node:url';
+import process from 'node:process';
+import { globSync } from 'glob';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import copy from 'rollup-plugin-copy';
@@ -19,7 +19,9 @@ import {
     generateTLSConfig,
     getDistPath,
 } from './vendor/toolkit/rollup.utils.js';
+import { createRequire } from "module";
 
+const require = createRequire(import.meta.url);
 const pkg = require('./package.json');
 const appEnv = typeof process.env.APP_ENV !== 'undefined' ? process.env.APP_ENV : 'local';
 const watch = process.env.ROLLUP_WATCH === 'true';
