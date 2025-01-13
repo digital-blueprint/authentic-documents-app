@@ -76,7 +76,6 @@ export default (async () => {
             format: 'esm',
             sourcemap: true,
         },
-        preserveEntrySignatures: false,
         // external: ['zlib', 'http', 'fs', 'https', 'url'],
         onwarn: function (warning, warn) {
             // ignore chai warnings
